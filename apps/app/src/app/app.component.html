@@ -2,11 +2,25 @@
 
 <!-- The '*' is just syntax suggar to wrap the directive inside an ng-template -->
 <!-- Using this syntax requires our input to be used in a special syntax as well -->
-<section *angularStructuralDirectiveHideAfter="5000; then placeHolder">
+<section
+  *angularStructuralDirectiveHideAfter="
+    7000 as time;
+    then placeHolder;
+    let cnt = counter;
+    let default
+  "
+>
   <h2>Temporary content</h2>
-  <p>This layout should disappear in 5s</p>
+  <p>This layout should disappear in {{ time }}s. Counting down: {{ cnt }}</p>
+  <p>This is the default $implicit value: {{ default }}</p>
 </section>
 
-<ng-template #placeHolder>
+<ng-template
+  #placeHolder
+  let-hiddenAfter="angularStructuralDirectiveHideAfter"
+  let-myDefault
+>
   <h2>Content after countdown</h2>
+  <p>It was visible for {{ hiddenAfter }} seconds</p>
+  <p>This is the $implicit default value: {{ myDefault }}</p>
 </ng-template>
