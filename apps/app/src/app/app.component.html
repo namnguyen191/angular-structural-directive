@@ -1,1 +1,12 @@
-<angular-structural-directive-nx-welcome></angular-structural-directive-nx-welcome>
+<h1>Structural Directives!</h1>
+
+<!-- The '*' is just syntax suggar to wrap the directive inside an ng-template -->
+<!-- Using this syntax requires our input to be used in a special syntax as well -->
+<section *angularStructuralDirectiveHideAfter="5000; then placeHolder">
+  <h2>Temporary content</h2>
+  <p>This layout should disappear in 5s</p>
+</section>
+
+<ng-template #placeHolder>
+  <h2>Content after countdown</h2>
+</ng-template>
