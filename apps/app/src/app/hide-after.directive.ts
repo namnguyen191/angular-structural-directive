@@ -35,14 +35,21 @@ export class HideAfterDirective implements OnInit {
   }
 
   @Input('angularStructuralDirectiveHideAfterThen')
-  placeHolder: TemplateRef<any> | null = null;
+  placeHolder: TemplateRef<HideAfterContext> | null = null;
 
   private context = new HideAfterContext();
 
   constructor(
     private viewContainerRef: ViewContainerRef,
-    private templateRef: TemplateRef<any>
+    private templateRef: TemplateRef<HideAfterContext>
   ) {}
+
+  static ngTemplateContextGuard(
+    dir: HideAfterDirective,
+    ctx: unknown
+  ): ctx is HideAfterContext {
+    return true;
+  }
 
   ngOnInit(): void {
     this.viewContainerRef.createEmbeddedView(this.templateRef, this.context);

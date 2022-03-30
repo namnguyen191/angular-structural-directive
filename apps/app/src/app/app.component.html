@@ -24,3 +24,9 @@
   <p>It was visible for {{ hiddenAfter }} seconds</p>
   <p>This is the $implicit default value: {{ myDefault }}</p>
 </ng-template>
+
+<br />
+
+<section *angularStructuralDirectiveIfLoaded="state">
+  Data was loaded. User name {{ state.data.name }}
+</section>
